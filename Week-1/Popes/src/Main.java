@@ -1,5 +1,4 @@
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main
@@ -16,9 +15,8 @@ public class Main
 		}
 		sc.close();
 		
-		sol1(popeStarts, years); // O(n^2) solution (brute force)
-		sol2(popeStarts, years); // O(n \log n) solution (binary search)
-		sol3(popeStarts, years); // O(n) solution (two pointers)
+		//sol1(popeStarts, years); // O(n^2) solution (brute force)
+		sol2(popeStarts, years); // O(n) solution (two pointers)
 	}
 	
 	//Brute force, O(n^2)
@@ -50,16 +48,31 @@ public class Main
 		System.out.println(maxPopes);
 	}
 	
-	
-	//Binary search, O(n \log n)
+	//Two pointers, O(n)
 	public static void sol2(int[] popeStarts, int years)
 	{
-		
-	}
-	
-	//Two pointers, O(n)
-	public static void sol3(int[] popeStarts, int years)
-	{
-		
+		int p1 = 0;
+		int p2 = 0;
+		int maxPopes = 0;
+		int bestStart = -1;
+		int bestEnd = -1;
+		while(p2 < popeStarts.length)
+		{
+			if(popeStarts[p2] - popeStarts[p1] < years)
+			{
+				if(p2 - p1 + 1 > maxPopes)
+				{
+					bestStart = popeStarts[p1];
+					bestEnd = popeStarts[p2];
+					maxPopes = p2 - p1 + 1;
+				}
+				p2++;
+			}
+			else
+			{
+				p1++;
+			}
+		}
+		System.out.println(maxPopes + " " + bestStart + " " + bestEnd);
 	}
 }
