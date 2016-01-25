@@ -1,0 +1,193 @@
+\normalfont\documentclass[letterpaper,11pt]{article}
+\usepackage{amsmath, amsfonts,amssymb,latexsym}
+\usepackage{fullpage}
+\usepackage{parskip}
+\usepackage{graphicx}
+
+\begin{document}
+\subsection*{Problem 1: Professor GukiZ's Robot}
+Professor GukiZ makes a new robot. The robot is in the point with coordinates $(x_1, y_1)$ and should go to the point $(x_2 y_2)$. In a single step the robot can change any of its coordinates (maybe both of them) by one (increase or decrease). So the robot can move in one of eight possible directions. Find the minimal number of steps the robot should make to reach the finish.
+
+\textbf{Input} \newline
+The first line contains two integers $x_1, y_1$ $(-10^9 \leq x_1, y_1 \leq 10^9)$ - the start position of the robot.
+
+The second line contains two integers $x_2, y_2$ $(-10^9 \leq x_2, y_2 \leq 10^9)$ - the finish position of the robot.
+
+\textbf{Output} \newline
+Print the integer $d$ - the minimal number of steps to reach the finish.
+
+\textbf{Examples}
+\begin{itemize}
+\item \textbf{Input} \newline
+0 0 \newline
+4 5
+
+\textbf{Output} \newline
+5
+
+\item \textbf{Input} \newline
+3 4 \newline
+6 1
+
+\textbf{Output} \newline
+3
+\end{itemize}
+
+\newpage
+
+\subsection*{Problem 2: Restaurant}
+
+(Taken from: http://codeforces.com/problemset/problem/597/B) \newline
+A restaurant received $n$ different reservation requests. Each request reserves the entire restaurant for a continuous period of time. The $i$-th order is characterized by two time values - the start time $l_i$ and the finish time $r_i$ $(l_i \leq r_i)$.
+
+Restaurant management can accept and reject reservations. What is the maximal number of reservations the restaurant can accept?
+
+No two accepted orders can intersect, i.e., they can't share even a moment of time. If one order ends in the same moment that the other starts, they can't both be accepted.
+
+\textbf{Input/Output} \newline
+The first line contains an integer $n$ $(1 \leq n \leq 5 \cdot 10^5)$, the number of reservations. The following $n$ lines contain the integer values $l_i$ and $r_i$ each $(1 \leq l_i \leq r_i \leq 10^9)$.
+
+Print the maximal number of orders that can be accepted.
+
+\textbf{Examples}
+\begin{itemize}
+\item \textbf{Input} \newline
+2 \newline
+7 11 \newline
+4 7
+
+\textbf{Output} \newline
+1
+
+\item \textbf{Input} \newline
+5 \newline
+1 2 \newline
+2 3 \newline
+3 4 \newline
+4 5 \newline
+5 6
+
+\textbf{Output} \newline
+3
+
+\item \textbf{Input} \newline
+6 \newline
+4 8 \newline
+1 5 \newline
+4 7 \newline
+2 5 \newline
+1 3 \newline
+6 8
+
+\textbf{Output} \newline
+2
+\end{itemize}
+
+
+\newpage
+
+\subsection*{Problem 3: Mind and Body}
+
+(Taken from: Microsoft coding competition, UCI 2016) \newline
+Professor Farnsworth has invented a machine that swaps the minds of two bodies. However, after the first swap, he realizes that he is unable to use the machine to swap the same pair of bodies. As the episode unfolds, more and more pairs of people swap bodies.
+
+For this problem, we will help the Professor determine the minimum number of swaps needed to bring everyone's minds back into the correct bodies, so that he knows how much fuel to feed the machine.
+
+Remember, the machine cannot be used to swap the same pair of bodies more than once. For example, say that the Professor swapped bodies with Amy. If Bender's mind is in his own body, the following is an invalid solution:
+
+\begin{itemize}
+\item Bender (with his own mind) swaps bodies with the Professor (with Amy's mind), so that Amy's mind is in Bender's body, and Bender's mind is in the Professor's body.
+\item The Professor (with Bender's mind) swaps bodies with Amy (with the Professor's mind), so that the Professor gets his own mind back, while Amy gets Bender's mind.
+\item Bender (with Amy's mind) swaps bodies with Amy (with Bender's mind) so that both Bender and Amy get their minds back.
+\end{itemize}
+
+The above solution is invalid because, while it is the shortest solution, the Professor had already swapped bodies with Amy, rendering the second step invalid. In fact, there is no valid solution that will bring the Professor's mind back into his body, and Amy's mind back into her body.
+
+However, if we add Fry's body and mind to the problem, then the following sequence of five swaps will bring everyone's mind back to the correct body:
+
+\begin{itemize}
+\item Amy and Bender swap bodies.
+\item Professor and Fry swap bodies.
+\item Amy and Fry swap bodies.
+\item Professor and Bender swap bodies.
+\item Bender and Fry swap bodies.
+\end{itemize}
+
+In fact, five is the minimum number of swaps needed (and number of swaps possible) to bring everyone's minds back to their bodies.
+
+\textbf{Input} \newline
+The input to your solution will have three starting configurations, and each configuration will have two parts: the current state of the bodies and the pairs of bodies that have already been swapped. Each configuration is independent from the others.
+
+The first line of each configuration will be the line CURRENT STATE, which starts the first part of the configuration. Each subsequent line will contain two names separated by a single whitespace: the first of the two names is the name of the person whose mind is in the body of the second of the two names. So, for example, the line Bender Amy means that Bender's mind is in Amy's body.
+
+Once the current state of the bodies have been described, the second part of the configuration begins with the line ALREADY SWAPPED. Each subsequent line will also contain two names -- these are the names of a pair of bodies whose minds have already been swapped. So, for example, the line Bender Amy means that the bodies of Bender and Amy have already swapped minds (though note that, during the swap, the minds may not have been Bender's and Amy's!).
+
+Each configuration ends with the line END OF CURRENT STATE. A newline separates one configuration from the next.
+
+The first configuration in the example input represents the second of the two situations described in the problem statement.
+
+You can assume that all of the names of the people involved in the swaps are present in the first part of each configuration. Also, you can assume that the number of people involved is between 5 and 7 (both bounds inclusive).
+
+A naive, inefficient solution to this problem may not be able to find the solution for all three configurations within the allotted time limit.
+
+\textbf{Output} \newline
+The output from your solution should have three lines: each line should have the minimum number of swaps required to bring everyone's minds back to their correct bodies, given the initial configuration.
+
+So, for the first configuration in the input example provided, since five swaps are needed, the first line in the output should be the number 5.
+
+If it is not possible, given an initial configuration, to swap everyone's minds back to their correct bodies, the corresponding line in the output should be the number -1. If no swap is needed, the corresponding line in the output should be the number 0.
+
+\textbf{Example input} \newline
+CURRENT STATE \newline
+Professor Amy \newline
+Amy Professor \newline
+Bender Bender \newline
+Fry Fry \newline
+Clyde Clyde \newline
+Leela Leela \newline
+ALREADY SWAPPED \newline
+Professor Amy \newline
+END OF CURRENT STATE
+
+CURRENT STATE \newline
+Washbucket Fry \newline
+Nikolai Clyde \newline
+Amy Nikolai \newline
+Clyde Washbucket \newline
+Fry Amy \newline
+ALREADY SWAPPED \newline
+Fry Washbucket \newline
+END OF CURRENT STATE
+
+CURRENT STATE \newline
+Fry Zoidberg \newline
+Hermes Amy \newline
+Leela Clyde \newline
+Amy Hermes \newline
+Zoidberg Fry \newline
+Clyde Leela \newline
+ALREADY SWAPPED \newline
+Zoidberg Hermes \newline
+Zoidberg Fry \newline
+Amy Hermes \newline
+Amy Clyde \newline
+Hermes Fry \newline
+Zoidberg Amy \newline
+Amy Leela \newline
+Clyde Hermes \newline
+Zoidberg Clyde \newline
+Fry Leela \newline
+Hermes Leela \newline
+Zoidberg Leela \newline
+Amy Fry \newline
+Clyde Leela \newline
+Clyde Fry \newline
+END OF CURRENT STATE \newline
+
+\textbf{Example output} \newline
+5 \newline
+4 \newline
+-1
+
+\newpage
+\end{document}
